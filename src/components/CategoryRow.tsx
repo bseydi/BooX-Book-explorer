@@ -111,9 +111,9 @@ export default function CategoryRow({ title, subject, items, isLoading, error, o
           {/* Scroller */}
           <div
             ref={scrollerRef}
-            className="-mx-4 overflow-x-auto px-4 no-scrollbar"
+            className="overflow-x-auto px-4 no-scrollbar"
           >
-            <div className="flex gap-3 pb-2 snap-x snap-mandatory">
+            <div className="flex gap-3 pb-2 overflow-x-auto overflow-y-hidden snap-x snap-mandatory">
               {items.map((b) => (
                 <Link
                   key={b.workId}

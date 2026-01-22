@@ -29,14 +29,13 @@ export default function Layout() {
     <div className="min-h-dvh flex flex-col bg-gradient-to-b from-indigo-50 via-zinc-50 to-white text-zinc-900">
       <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-          <Link to="/" className="flex items-center gap-2 font-semibold">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-fuchsia-600 text-white">
-              B
+          <Link to="/" className="flex items-center gap-0 font-semibold">
+            <span className="inline-flex h-8 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-fuchsia-600 text-white">
+              BooX
             </span>
-            <span>BooX</span>
           </Link>
 
-          <nav className="flex items-center gap-2">
+          <nav className="flex items-center gap-1">
             <NavItem to={getLastSearchUrl()}>Recherche</NavItem>
 
             <NavItem to="/favorites">

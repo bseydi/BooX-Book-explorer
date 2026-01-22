@@ -177,7 +177,7 @@ export default function Read() {
 
           {/* Min ★ (pills) */}
           <div className="sm:ml-auto">
-            <div className="inline-flex items-center gap-1 rounded-2xl border border-zinc-200 bg-white p-1 shadow-sm">
+            <div className="inline-flex items-center gap-0 rounded-2xl border border-zinc-200 bg-white p-1 shadow-sm">
               {[0, 1, 2, 3, 4, 5].map((v) => {
                 const active = minRating === v;
                 return (

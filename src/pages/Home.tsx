@@ -13,10 +13,10 @@ import { useRef } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { saveScroll, restoreScroll } from "../services/scrollRestore";
 import { setLastSearchUrl } from "../services/lastSearch";
-import CategoryRow from "../components/CategoryRow";
 import { getSubjectBooks } from "../services/openLibrarySubjects";
 import { getLastClickedWorkId, clearLastClickedWorkId } from "../services/lastClicked";
 import AlertCard from "../components/ui/AlertCard";
+import CategoryMasonry from "../components/CategoryMansory";
 
 
 export default function Home() {
@@ -49,13 +49,47 @@ export default function Home() {
     const didRestoreRef = useRef(false);
 
     const CATEGORIES = [
-        { title: "Thriller", subject: "thriller" },
-        { title: "Histoire", subject: "history" },
         { title: "Fantasy", subject: "fantasy" },
-        { title: "Romance", subject: "romance" },
         { title: "Science-fiction", subject: "science_fiction" },
-    ];
+        { title: "Thriller", subject: "thriller" },
+        { title: "Romance", subject: "romance" },
+        { title: "Mystery", subject: "mystery" },
+        { title: "Horreur", subject: "horror" },
+        { title: "Aventure", subject: "adventure" },
+        { title: "Action", subject: "action" },
+        { title: "Dystopie", subject: "dystopia" },
 
+        { title: "Histoire", subject: "history" },
+        { title: "Biographies", subject: "biography" },
+        { title: "Philosophie", subject: "philosophy" },
+        { title: "Psychologie", subject: "psychology" },
+        { title: "Sociologie", subject: "sociology" },
+        { title: "Politique", subject: "politics" },
+        { title: "Économie", subject: "economics" },
+
+        { title: "Informatique", subject: "computers" },
+        { title: "Programmation", subject: "programming" },
+        { title: "Maths", subject: "mathematics" },
+        { title: "Physique", subject: "physics" },
+        { title: "Astronomie", subject: "astronomy" },
+        { title: "Médecine", subject: "medicine" },
+
+        { title: "Art", subject: "art" },
+        { title: "Musique", subject: "music" },
+        { title: "Cinéma", subject: "film" },
+        { title: "Photographie", subject: "photography" },
+
+        { title: "Cuisine", subject: "cooking" },
+        { title: "Voyage", subject: "travel" },
+        { title: "Sport", subject: "sports" },
+
+        { title: "Jeunesse", subject: "juvenile" },
+        { title: "Enfants", subject: "children" },
+        { title: "Comics", subject: "comics" },
+
+        { title: "Poésie", subject: "poetry" },
+        { title: "Classiques", subject: "classic" },
+    ];
 
     useEffect(() => {
         if (hasSearch) return;
@@ -364,26 +398,27 @@ export default function Home() {
                 </>
             ) : (
                 <>
-                    {/* ✅ Tout ce qui concerne l'exploration par catégories */}
-                    <div className="space-y-6">
-                        {CATEGORIES.map((c, idx) => (
-                            <div key={c.subject}>
-                                <CategoryRow
-                                    title={c.title}
-                                    subject={c.subject}
-                                    items={catData[c.subject] ?? []}
-                                    isLoading={!!catLoading[c.subject]}
-                                    error={catError[c.subject]}
-                                    onSeeAll={(subj) => runSearch(subj.replaceAll("_", " "))}
-                                />
-
-                                {idx !== CATEGORIES.length - 1 ? (
-                                    <div className="mt-8 h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
-                                ) : null}
+                    <div className="mt-2">
+                        <div className="flex items-end justify-between gap-4">
+                            <div>
+                                <h2 className="text-lg font-semibold tracking-tight">Explorer</h2>
+                                <p className="mt-1 text-sm text-zinc-600">
+                                    Découvre des livres par catégorie (clique pour ouvrir).
+                                </p>
                             </div>
-                        ))}
+                        </div>
+
+                        <CategoryMasonry
+                            categories={CATEGORIES}
+                            data={catData}
+                            loading={catLoading}
+                            error={catError}
+                            onOpen={(subject: string) => runSearch(subject.replaceAll("_", " "))}
+                        // ou: onOpen={(subject) => setSearchParams({ q: subject.replaceAll("_", " "), page: "1" })}
+                        />
                     </div>
                 </>
+
             )}
 
 

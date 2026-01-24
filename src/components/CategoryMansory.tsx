@@ -12,10 +12,6 @@ type Props = {
   onOpen: (subject: string) => void;
 };
 
-function pickCover(items: BookSearchItem[]) {
-  return items.find((b) => typeof b.coverId === "number")?.coverId;
-}
-
 function heightClass(i: number) {
   // pattern simple : varie la hauteur pour l’effet “mosaic”
   const mod = i % 6;
@@ -62,7 +58,6 @@ export default function CategoryMasonry({ categories, data, loading, error, onOp
     <div className="mt-4">
       <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
         {categories.map((c, i) => {
-          const items = data[c.subject] ?? [];
           const coverId = coverBySubject[c.subject];
           const isLoading = !!loading[c.subject];
           const err = error[c.subject];

@@ -13,7 +13,7 @@ import { useRef } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { saveScroll, restoreScroll } from "../services/scrollRestore";
 import { setLastSearchUrl } from "../services/lastSearch";
-import { getSubjectBooks } from "../services/openLibrarySubjects";
+import { getSubjectBooks, peekSubjectBooks } from "../services/openLibrarySubjects";
 import { getLastClickedWorkId, clearLastClickedWorkId } from "../services/lastClicked";
 import AlertCard from "../components/ui/AlertCard";
 import CategoryMasonry from "../components/CategoryMansory";
@@ -102,9 +102,13 @@ export default function Home() {
                     setCatLoading((p) => ({ ...p, [c.subject]: true }));
                     setCatError((p) => ({ ...p, [c.subject]: null }));
 
+                    const cached = peekSubjectBooks(c.subject, 18);
+                    if (cached && cached.length) {
+                        setCatData((p) => ({ ...p, [c.subject]: cached }));
+                    }
+
                     const items = await getSubjectBooks(c.subject, 18);
                     if (cancelled) return;
-
                     setCatData((p) => ({ ...p, [c.subject]: items }));
                 } catch (e) {
                     if (cancelled) return;

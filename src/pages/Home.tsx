@@ -53,42 +53,23 @@ export default function Home() {
         { title: "Science-fiction", subject: "science_fiction" },
         { title: "Thriller", subject: "thriller" },
         { title: "Romance", subject: "romance" },
-        { title: "Mystery", subject: "mystery" },
         { title: "Horreur", subject: "horror" },
-        { title: "Aventure", subject: "adventure" },
-        { title: "Action", subject: "action" },
-        { title: "Dystopie", subject: "dystopia" },
 
         { title: "Histoire", subject: "history" },
         { title: "Biographies", subject: "biography" },
         { title: "Philosophie", subject: "philosophy" },
         { title: "Psychologie", subject: "psychology" },
-        { title: "Sociologie", subject: "sociology" },
         { title: "Politique", subject: "politics" },
         { title: "Économie", subject: "economics" },
 
         { title: "Informatique", subject: "computers" },
-        { title: "Programmation", subject: "programming" },
         { title: "Maths", subject: "mathematics" },
         { title: "Physique", subject: "physics" },
-        { title: "Astronomie", subject: "astronomy" },
-        { title: "Médecine", subject: "medicine" },
 
-        { title: "Art", subject: "art" },
         { title: "Musique", subject: "music" },
         { title: "Cinéma", subject: "film" },
-        { title: "Photographie", subject: "photography" },
-
-        { title: "Cuisine", subject: "cooking" },
-        { title: "Voyage", subject: "travel" },
-        { title: "Sport", subject: "sports" },
-
         { title: "Jeunesse", subject: "juvenile" },
-        { title: "Enfants", subject: "children" },
-        { title: "Comics", subject: "comics" },
-
         { title: "Poésie", subject: "poetry" },
-        { title: "Classiques", subject: "classic" },
     ];
 
     useEffect(() => {
